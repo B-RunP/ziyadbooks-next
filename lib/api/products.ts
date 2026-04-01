@@ -49,20 +49,27 @@ export async function getProducts(
     limit = 8
 ): Promise<ProductPagination> {
     try {
+        console.log('BASE_URL:', process.env.NEXT_PUBLIC_API_BASE_URL);
+        console.log('TOKEN ADA:', !!process.env.ZIYAD_BEARER_TOKEN);
+        console.log('REQUEST URL:', `/ecommerce/auth/products/all/category?page=${page}&limit=${limit}`);
+
         const response = await apiClient.get<ProductApiResponse>(
             `/ecommerce/auth/products/all/category?page=${page}&limit=${limit}`
         );
 
+        console.log('RESPONSE STATUS:', response.status);
+        console.log('RESPONSE DATA:', JSON.stringify(response.data, null, 2));
+
         if (!response?.data?.data) {
-            throw new Error('Response data kosong atau tidak sesuai format');
+            throw new Error('Response data kosong atau format tidak sesuai');
         }
 
         return response.data.data;
     } catch (error: any) {
         console.error('GET PRODUCTS ERROR');
-        console.error('message:', error?.message);
-        console.error('status:', error?.response?.status);
-        console.error('response:', error?.response?.data);
+        console.error('MESSAGE:', error?.message);
+        console.error('STATUS:', error?.response?.status);
+        console.error('RESPONSE:', JSON.stringify(error?.response?.data, null, 2));
 
         return {
             current_page: 1,
