@@ -12,7 +12,6 @@ export function Hero({ products }: HeroProps) {
     <section className="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-emerald-50 pt-16 sm:pt-20 md:pt-28 lg:pt-32 pb-12 sm:pb-16 md:pb-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12">
-          {/* Left Content */}
           <div className="space-y-5 sm:space-y-6">
             <div className="inline-block rounded-full bg-emerald-100 px-4 py-2 text-sm font-medium text-emerald-800">
               ✨ Koleksi Buku Islami Terpercaya
@@ -38,7 +37,6 @@ export function Hero({ products }: HeroProps) {
               </button>
             </div>
 
-            {/* Stats */}
             <div className="grid grid-cols-2 gap-4 pt-4 sm:grid-cols-3 sm:gap-6">
               <div className="rounded-xl bg-white/70 p-4 shadow-sm ring-1 ring-emerald-100">
                 <div className="text-2xl font-bold text-emerald-700 sm:text-3xl">
@@ -63,7 +61,6 @@ export function Hero({ products }: HeroProps) {
             </div>
           </div>
 
-          {/* Right Content - Featured Books */}
           <div className="relative">
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-4">
               {heroProducts.map((product, index) => (
@@ -90,7 +87,6 @@ export function Hero({ products }: HeroProps) {
               ))}
             </div>
 
-            {/* Decorative Element */}
             <div className="absolute -right-2 -top-2 h-20 w-20 rounded-full bg-amber-400 opacity-20 blur-2xl sm:-right-4 sm:-top-4 sm:h-24 sm:w-24" />
             <div className="absolute -bottom-2 -left-2 h-24 w-24 rounded-full bg-emerald-400 opacity-20 blur-2xl sm:-bottom-4 sm:-left-4 sm:h-32 sm:w-32" />
           </div>

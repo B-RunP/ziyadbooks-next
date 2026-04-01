@@ -73,14 +73,13 @@ export function ProductGrid({
               href={`/?page=${Math.max(1, currentPage - 1)}`}
               aria-disabled={currentPage === 1}
               className={`inline-flex h-10 min-w-10 items-center justify-center rounded-lg border px-3 text-sm font-medium transition ${currentPage === 1
-                  ? 'pointer-events-none border-gray-200 bg-gray-100 text-gray-400'
-                  : 'border-gray-300 bg-white text-gray-700 hover:border-emerald-600 hover:text-emerald-700'
+                ? 'pointer-events-none border-gray-200 bg-gray-100 text-gray-400'
+                : 'border-gray-300 bg-white text-gray-700 hover:border-emerald-600 hover:text-emerald-700'
                 }`}
             >
               <ChevronLeft className="h-4 w-4" />
             </Link>
 
-            {/* Jump to previous group */}
             {startPage > 1 && (
               <>
                 <Link
@@ -101,22 +100,20 @@ export function ProductGrid({
               </>
             )}
 
-            {/* Numbered pages */}
             {pageNumbers.map((page) => (
               <Link
                 key={page}
                 href={`/?page=${page}`}
                 aria-current={page === currentPage ? 'page' : undefined}
                 className={`inline-flex h-10 min-w-10 items-center justify-center rounded-lg border px-3 text-sm font-medium transition ${page === currentPage
-                    ? 'border-emerald-700 bg-emerald-700 text-white'
-                    : 'border-gray-300 bg-white text-gray-700 hover:border-emerald-600 hover:text-emerald-700'
+                  ? 'border-emerald-700 bg-emerald-700 text-white'
+                  : 'border-gray-300 bg-white text-gray-700 hover:border-emerald-600 hover:text-emerald-700'
                   }`}
               >
                 {page}
               </Link>
             ))}
 
-            {/* Jump to next group */}
             {endPage < lastPage && (
               <>
                 {endPage < lastPage - 1 && (
@@ -137,13 +134,12 @@ export function ProductGrid({
               </>
             )}
 
-            {/* Next */}
             <Link
               href={`/?page=${Math.min(lastPage, currentPage + 1)}`}
               aria-disabled={currentPage === lastPage}
               className={`inline-flex h-10 min-w-10 items-center justify-center rounded-lg border px-3 text-sm font-medium transition ${currentPage === lastPage
-                  ? 'pointer-events-none border-gray-200 bg-gray-100 text-gray-400'
-                  : 'border-gray-300 bg-white text-gray-700 hover:border-emerald-600 hover:text-emerald-700'
+                ? 'pointer-events-none border-gray-200 bg-gray-100 text-gray-400'
+                : 'border-gray-300 bg-white text-gray-700 hover:border-emerald-600 hover:text-emerald-700'
                 }`}
             >
               <ChevronRight className="h-4 w-4" />
