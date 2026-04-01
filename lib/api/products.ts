@@ -44,10 +44,37 @@ export interface ProductApiResponse {
     data: ProductPagination;
 }
 
-export async function getProducts(page = 1, limit = 8): Promise<ProductPagination> {
-    const response = await apiClient.get<ProductApiResponse>(
-        `/ecommerce/auth/products/all/category?page=${page}&limit=${limit}`
-    );
+export async function getProducts(
+    page = 1,
+    limit = 8
+): Promise<ProductPagination> {
+    try {
+        const response = await apiClient.get<ProductApiResponse>(
+            `/ecommerce/auth/products/all/category?page=${page}&limit=${limit}`
+        );
 
-    return response.data.data;
+        if (!response?.data?.data) {
+            throw new Error('Response data kosong atau tidak sesuai format');
+        }
+
+        return response.data.data;
+    } catch (error: any) {
+        console.error('GET PRODUCTS ERROR');
+        console.error('message:', error?.message);
+        console.error('status:', error?.response?.status);
+        console.error('response:', error?.response?.data);
+
+        return {
+            current_page: 1,
+            data: [],
+            first_page_url: '',
+            from: 0,
+            last_page: 1,
+            next_page_url: null,
+            per_page: limit,
+            prev_page_url: null,
+            to: 0,
+            total: 0,
+        };
+    }
 }
